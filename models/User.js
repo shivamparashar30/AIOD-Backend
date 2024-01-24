@@ -23,7 +23,7 @@ const UserSchema = new mongoose.Schema({
         unique: true,
     },
     phoneno: {
-        type: Number,
+        type: String,
         required: [true, 'Please enter your phoneno'],
         unique: true,
         maxlength: [10, 'Enter 10 numbers only'],
