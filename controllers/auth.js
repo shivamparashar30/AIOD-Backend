@@ -5,6 +5,17 @@ const crypto = require('crypto');
 const path = require('path');
 const sendEmail = require('../utils/sendEmail');
 
+// @desc    Get Users list
+//@route     GET/api/v1/auth/users
+//@access   Public
+
+exports.getUsers = asyncHandler(async (req, res, next) => {
+    const user = await User.find()
+    res.status(200).json({
+        success: true,
+        data: user,
+    });
+})
 
 // @desc    Register User
 //@route     POST/api/v1/auth/register
