@@ -49,26 +49,16 @@ exports.login = asyncHandler(async (req, res, next) => {
         return next(new ErrorResponse('Invalid Credentials', 401));
     }
 
-    const isVerified = user.isVerified
     const role = user.role
 
     // Create Token
     const token = user.getSignedJwtToken();
 
-    if (isVerified) {
-        res.status(200).json({
-            success: true,
-            role: role,
-            message: token
-        });
-    } else {
-        res.status(200).json({
-            success: true,
-            role: role,
-            message: "You are not verified!!"
-        });
-    }
-
+    res.status(200).json({
+        success: true,
+        role: role,
+        message: token
+    });
 
 });
 
