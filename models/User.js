@@ -28,8 +28,14 @@ const UserSchema = new mongoose.Schema({
         unique: true,
         maxlength: [10, 'Enter 10 numbers only'],
     },
+    Description: {
+        type: String
+    },
+    Address: {
+        type: String
+    },
 
-    profilePicture: {
+    ImageUrl: {
         type: String,
         default: 'no-photo.png',
     },
@@ -62,6 +68,9 @@ const UserSchema = new mongoose.Schema({
     createdAt: {
         type: Date,
         default: Date.now
+    },
+    donationCount: {
+        type: Number
     }
 });
 //encrypt password using bcrypt

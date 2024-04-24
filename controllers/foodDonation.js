@@ -3,6 +3,9 @@ const asyncHandler = require('../middleware/async');
 const FoodDonation = require('../models/FoodDonation');
 const DeliveryPartner = require('../models/DeliveryPartner');
 
+const User = require('../models/User');
+
+
 // @desc    Plan a Mess
 //@route     POST/api/v1/food/planmess
 //@access   private
@@ -23,7 +26,17 @@ exports.planMess = asyncHandler(async (req, res, next) => {
 exports.immidiatePickup = asyncHandler(async (req, res, next) => {
     const { type, estimateCount, Date, currLoc, status } = req.body;
 
+    let user = await User.findById(req.user.id);
+
+
     const foodDonation = await FoodDonation.create({ type, estimateCount, Date, currLoc, status });
+
+    user = await User.findOneAndUpdate(
+        { _id: req.user.id },
+        { $inc: { donationCount: 1 } },
+    );
+
+
     res.status(200).json({
         success: true,
         data: foodDonation,

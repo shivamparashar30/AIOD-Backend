@@ -21,10 +21,10 @@ exports.getUsers = asyncHandler(async (req, res, next) => {
 //@route     POST/api/v1/auth/register
 //@access   Public
 exports.register = asyncHandler(async (req, res, next) => {
-    const { username, name, email, phoneno, role, password } = req.body;
+    const data = req.body;
 
     //Create User
-    const user = await User.create({ username, name, email, phoneno, role, password });
+    const user = await User.create(data);
     // Create Token
     const token = user.getSignedJwtToken();
 

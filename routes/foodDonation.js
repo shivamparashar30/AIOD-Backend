@@ -12,10 +12,12 @@ const {
 
 // function for routing
 const router = express.Router();
+const { protect, checkVerification } = require('../middleware/auth');
+
 
 router.get('/foodlist', getFoodList);
 router.post('/planmess', planMess);
-router.post('/immidiatepickup', immidiatePickup);
+router.post('/immidiatepickup', protect, immidiatePickup);
 router.get('/getpartnerlist', getPartnerList);
 router.post('/addpartner', addDelivaryPartner);
 router.put('/updatepartner/:id', updateDeliveryPartner);
