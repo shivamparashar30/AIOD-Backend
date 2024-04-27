@@ -2,10 +2,24 @@ const mongoose = require('mongoose');
 const MoneyDonationSchema = new mongoose.Schema({
     paymentID: {
         type: String,
-        required: [true, 'Please enter paymentid '],
+        required: [true, 'Please enter paymentid ']
     },
-    ngo: {},
-    user: {},
+    ngoId: {
+        type: String
+    },
+    userId: {
+        type: String
+    },
+    userName: {
+        type: String
+    },
+    userEmail: {
+        type: String
+    },
+    userPhoneno: {
+        type: String
+    },
+
     donationAmount: {
         type: Number,
         required: [true, 'Please provide the amount'],

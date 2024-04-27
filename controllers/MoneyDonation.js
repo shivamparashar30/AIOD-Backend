@@ -2,15 +2,26 @@ const ErrorResponse = require('../utils/errorResponse');
 const asyncHandler = require('../middleware/async');
 const MoneyDonation = require('../models/MoneyDonation');
 
+const User = require('../models/User');
+
+
 //@desc         Donate money   
 //@routes       post/api/v1/moneydonate
 //@access       private
 exports.donateMoney = asyncHandler(async (req, res, next) => {
-    const { paymentID, donationAmount, status, createdAt } = req.body
+    const { paymentID, donationAmount, ngoId, userId, userName, userEmail, userPhoneno } = req.body
+
+    let user = await User.findById(req.user.id);
+
+
     const moneyDonation = await MoneyDonation.create({
-        paymentID,
-        donationAmount, status, createdAt
+        paymentID, donationAmount, ngoId, userId, userName, userEmail, userPhoneno
     });
+
+    user = await User.findOneAndUpdate(
+        { _id: req.user.id },
+        { $inc: { donationCount: 1 } },
+    );
 
     res.status(200).json({
         success: true,
@@ -22,7 +33,7 @@ exports.donateMoney = asyncHandler(async (req, res, next) => {
 //@routes       GET/api/v1/donatedmoneylist
 //@access       private
 exports.getMoneyDonationList = asyncHandler(async (req, res, next) => {
-    const money = await MoneyDonation.find();
+    const money = await MoneyDonation.findById(req.user.id);
     res.status(200).json({
         success: true,
         count: money.length,
