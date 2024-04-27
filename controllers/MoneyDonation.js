@@ -30,10 +30,10 @@ exports.donateMoney = asyncHandler(async (req, res, next) => {
 });
 
 //@desc         Get Donate money list  
-//@routes       GET/api/v1/donatedmoneylist
+//@routes       GET/api/v1/donatedmoneylist/:id
 //@access       private
 exports.getMoneyDonationList = asyncHandler(async (req, res, next) => {
-    const money = await MoneyDonation.findById(req.user.id);
+    const money = await MoneyDonation.find({ ngoId: { $in: req.user.id } });
     res.status(200).json({
         success: true,
         count: money.length,
