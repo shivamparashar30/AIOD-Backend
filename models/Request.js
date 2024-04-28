@@ -9,6 +9,37 @@ const RequestSchema = new mongoose.Schema({
         type: mongoose.Schema.ObjectId,
         required: true,
     },
+    donationid: {
+        type: String
+    },
+    donationType: {
+        type: String
+    },
+    userName: {
+        type: String
+    },
+
+    address2: {
+        type: String
+    },
+    donationid: {
+        type: String
+    },
+    phoneno: {
+        type: String
+    },
+    Item: {
+        type: String
+    },
+    source: {
+        type: String
+    },
+    count: {
+        type: String
+    },
+    vehicle: {
+        type: String
+    },
 
     // Here 1 = Requested, 2 = Accepted, 3 = Rejected
     status: {
