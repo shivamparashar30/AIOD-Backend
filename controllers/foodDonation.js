@@ -24,12 +24,12 @@ exports.planMess = asyncHandler(async (req, res, next) => {
 //@access   private
 
 exports.immidiatePickup = asyncHandler(async (req, res, next) => {
-    const { type, estimateCount, Date, currLoc, status } = req.body;
+    // const { type, estimateCount, Date, currLoc, status } = req.body;
 
     let user = await User.findById(req.user.id);
 
 
-    const foodDonation = await FoodDonation.create({ type, estimateCount, Date, currLoc, status });
+    const foodDonation = await FoodDonation.create(req.body);
 
     user = await User.findOneAndUpdate(
         { _id: req.user.id },
