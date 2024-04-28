@@ -13,6 +13,7 @@ const foodDonation = require('./routes/foodDonation');
 const MoneyDonation = require('./routes/MoneyDonation');
 const ClothesDonation = require('./routes/ClothesDonation');
 const BooksDonation = require('./routes/BooksDonation')
+const Request = require('./routes/Request')
 
 const errorHandler = require('./middleware/error');
 
@@ -32,6 +33,7 @@ app.use('/api/v1/food', foodDonation);
 app.use('/api/v1/money', MoneyDonation);
 app.use('/api/v1/clothes', ClothesDonation);
 app.use('/api/v1/books', BooksDonation);
+app.use('/api/v1/request', Request);
 
 
 
