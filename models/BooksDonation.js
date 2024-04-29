@@ -1,47 +1,22 @@
 const mongoose = require('mongoose');
 const BooksDonationSchema = new mongoose.Schema({
+
     user: {},
     ngo: {},
-    bookTitle: {
-        type: String,
-        required: true,
-    },
-    bookQuantity: {
-        type: Number,
-        default: 1,
-    },
-    bookAuthor: {
-        type: String,
 
-    },
-    bookClass: {
+    estimateCount: {
         type: String,
+        required: [true, 'Please Give a Count'],
+        default: "0"
     },
-    bookSubject: {
-        type: [String],
-    },
-    bookGenre: {
+    Vehicle: {
         type: String,
-        enum: ['fiction', 'non-fiction'],
+        enum: ['bike', 'truck'],
+        default: 'bike'
     },
-    createdAt: {
-        type: Date,
-        default: Date.now
-    },
-    deliveryType: {
-        type: String,
-        enum: ['Pickup', 'DropOff'],
-        required: [true, 'Please tell the Delivery Type'],
-    },
-    Status: {
-        type: String,
-        enum: ['Requested', 'Delivered', 'picked'],
-        default: 'Requested'
-    },
-    currloc: {
-        type: String,
-        //required:[true,'please provide your current location'],
-    },
+    bookDetails: {
+        type: String
+    }
 });
 
 module.exports = mongoose.model('BooksDonation', BooksDonationSchema);

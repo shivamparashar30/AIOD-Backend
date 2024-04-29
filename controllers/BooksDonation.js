@@ -8,18 +8,14 @@ const User = require('../models/User');
 //@routes       post/api/v1/donateBooksDropoff
 //@access       private
 exports.donateBooksDropoff = asyncHandler(async (req, res, next) => {
-    const { bookTitle, bookQuantity,
-        bookAuthor, bookClass, bookSubject, bookGenre,
-        createdAt, deliveryType } = req.body;
+    // const { bookTitle, bookQuantity,
+    //     bookAuthor, bookClass, bookSubject, bookGenre,
+    //     createdAt, deliveryType } = req.body;
 
     // Copy this line
     let user = await User.findById(req.user.id);
 
-    const booksDonation = await BooksDonation.create({
-        bookTitle, bookQuantity,
-        bookAuthor, bookClass, bookSubject, bookGenre,
-        createdAt, deliveryType,
-    });
+    const booksDonation = await BooksDonation.create(req.body);
 
     // Copy this line
     user = await User.findOneAndUpdate(

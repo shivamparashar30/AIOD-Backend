@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const ClothesDonationSchema = new mongoose.Schema({
     ngo: {},
     user: {},
+
     dressFor: {
         type: String,
         enum: ['men', 'women', 'children', 'all'],
