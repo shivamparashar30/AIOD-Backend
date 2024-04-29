@@ -22,9 +22,6 @@ const RequestSchema = new mongoose.Schema({
     address2: {
         type: String
     },
-    donationid: {
-        type: String
-    },
     phoneno: {
         type: String
     },

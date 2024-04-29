@@ -10,15 +10,15 @@ const User = require('../models/User');
 //@access       private
 
 exports.donateClothesDropoff = asyncHandler(async (req, res, next) => {
-    const { clothesAgesType, clothesSeasonType, clothesquantity, ageGroup, deliveryType } = req.body;
+    // const { clothesAgesType, clothesSeasonType, clothesquantity, ageGroup, deliveryType } = req.body;
     //change
     let user = await User.findById(req.user.id);
 
-    const clothesDonation = await ClothesDonation.create({ clothesAgesType, clothesSeasonType, clothesquantity, ageGroup, deliveryType });
-    res.status(200).json({
-        success: true,
-        data: clothesDonation,
-    });
+    const clothesDonation = await ClothesDonation.create(req.body);
+    // res.status(200).json({
+    //     success: true,
+    //     data: clothesDonation,
+    // });
 
     //change
     user = await User.findOneAndUpdate(
@@ -28,7 +28,7 @@ exports.donateClothesDropoff = asyncHandler(async (req, res, next) => {
 
     res.status(200).json({
         success: true,
-        data: booksDonation,
+        data: clothesDonation,
     });
 });
 

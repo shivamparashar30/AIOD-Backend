@@ -2,43 +2,56 @@ const mongoose = require('mongoose');
 const ClothesDonationSchema = new mongoose.Schema({
     ngo: {},
     user: {},
-    clothesAgesType: {
+    dressFor: {
         type: String,
-        enum: ['Infant', 'Boys', 'Girls', 'Men', 'Women'],
-        required: [true, "please Tell clothes type"],
+        enum: ['men', 'women', 'children', 'all'],
+        // required: [true, "please Tell clothes type"],
     },
-    clothesSeasonType: {
+    estimateCount: {
         type: String,
-        enum: ['Summer', 'Winter', 'Rainy'],
-        required: [true, "please Tell Season type"],
+        required: [true, 'Please Give a Count'],
+        default: "1"
     },
-    clothesquantity: {
-        type: Number,
-        min: 1,
-        max: 999,
-        default: 1,
-    },
-    ageGroup: {
+    Vehicle: {
         type: String,
+        enum: ['bike', 'truck'],
+        default: 'bike'
     },
-    deliveryType: {
-        type: String,
-        enum: ['Pickup', 'DropOff'],
-        required: [true, 'Please tell the Delivery Type'],
+    address1: {
+        type: String
     },
-    createdAt: {
-        type: Date,
-        default: Date.now
+    address2: {
+        type: String
     },
-    currLoc: {
-        type: String,
-        //required: [true, 'Add your Location'],
+    address3: {
+        type: String
     },
-    Status: {
-        type: String,
-        enum: ['Requested', 'Delivered', 'picked'],
-        default: 'Requested'
+    pincode: {
+        type: Number
     },
+    phoneno: {
+        type: Number
+    },
+
+
+    // deliveryType: {
+    //     type: String,
+    //     enum: ['Pickup', 'DropOff'],
+    //     required: [true, 'Please tell the Delivery Type'],
+    // },
+    // createdAt: {
+    //     type: Date,
+    //     default: Date.now
+    // },
+    // currLoc: {
+    //     type: String,
+    //     //required: [true, 'Add your Location'],
+    // },
+    // Status: {
+    //     type: String,
+    //     enum: ['Requested', 'Delivered', 'picked'],
+    //     default: 'Requested'
+    // },
 
 
 });
