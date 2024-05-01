@@ -28,7 +28,7 @@ exports.requestStatus = asyncHandler(async (req, res, next) => {
     }
 
 
-    request = await Request.findByIdAndUpdate(req.params.id, req.body, {
+    request = await Request.findByIdAndUpdate(new ObjectId(req.params.id), req.body, {
         new: true,
         runValidators: true,
     });

@@ -12,7 +12,7 @@ router.route('/sendrequest').post(protect, sendRequest);
 
 router
     .route('/:id')
-    .put(protect, authorize('ngo'), requestStatus);
+    .put(protect, requestStatus);
 
 router.route('/recipientRequests/:id').get(protect, getRecipientRequestes);
 
