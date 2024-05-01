@@ -3,6 +3,8 @@ const dotenv = require('dotenv');
 const morgan = require('morgan');
 const colors = require('colors');
 const connectDB = require('./config/db');
+const cors = require('cors');
+
 
 dotenv.config({ path: './config/config.env' });
 
@@ -36,7 +38,8 @@ app.use('/api/v1/books', BooksDonation);
 app.use('/api/v1/request', Request);
 
 
-
+// Enable Cors
+app.use(cors());
 
 app.use(errorHandler);
 
