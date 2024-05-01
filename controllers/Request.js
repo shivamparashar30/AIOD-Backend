@@ -21,11 +21,12 @@ exports.sendRequest = asyncHandler(async (req, res, next) => {
 exports.requestStatus = asyncHandler(async (req, res, next) => {
     let request = await Request.findById(req.params.id);
     let message = '';
-    if (!request) {
-        return next(
-            new ErrorResponse(`Request Not Found with id of ${req.params.id}`, 404)
-        );
-    }
+
+    // if (!request) {
+    //     return next(
+    //         new ErrorResponse(`Request Not Found with id of ${req.params.id}`, 404)
+    //     );
+    // }
 
 
     request = await Request.findByIdAndUpdate(req.params.id, req.body, {
