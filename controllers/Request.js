@@ -35,7 +35,10 @@ exports.requestStatus = asyncHandler(async (req, res, next) => {
 
     if (req.body.status === 2) {
         message = 'Request Accepted';
-    } else {
+    } else if (req.body.status === 4) {
+        message = 'Item Delivered';
+    }
+    else {
         message = 'Request Rejected';
     }
 

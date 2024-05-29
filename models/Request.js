@@ -38,7 +38,7 @@ const RequestSchema = new mongoose.Schema({
         type: String
     },
 
-    // Here 1 = Requested, 2 = Accepted, 3 = Rejected
+    // Here 1 = Requested, 2 = Accepted, 3 = Rejected, 4 = Delivered
     status: {
         type: Number,
     },
