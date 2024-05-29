@@ -17,6 +17,24 @@ exports.getUsers = asyncHandler(async (req, res, next) => {
     });
 })
 
+//  @desc   Get Single User
+// @route   GET /api/v1/auth/user/:id
+// @access  Private
+exports.getUser = asyncHandler(async (req, res, next) => {
+    const user = await User.findById(req.params.id);
+
+    if (!user) {
+        return next(
+            new ErrorResponse(`User not Found with id of ${req.params.id}`, 404)
+        );
+    }
+
+    res.status(200).json({
+        success: true,
+        data: user,
+    });
+});
+
 // @desc    Register User
 //@route     POST/api/v1/auth/register
 //@access   Public
