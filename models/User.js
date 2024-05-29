@@ -71,6 +71,12 @@ const UserSchema = new mongoose.Schema({
     },
     donationCount: {
         type: Number
+    },
+    driverName: {
+        type: String
+    },
+    driverPhone: {
+        type: Number
     }
 });
 //encrypt password using bcrypt
