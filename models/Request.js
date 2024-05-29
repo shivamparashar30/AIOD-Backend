@@ -42,6 +42,10 @@ const RequestSchema = new mongoose.Schema({
     status: {
         type: Number,
     },
+    createdAt: {
+        type: Date,
+        default: Date.now,
+    }
 });
 
 module.exports = mongoose.model('Request', RequestSchema);
