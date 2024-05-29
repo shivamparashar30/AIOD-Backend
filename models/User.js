@@ -76,7 +76,7 @@ const UserSchema = new mongoose.Schema({
         type: String
     },
     driverPhone: {
-        type: Number
+        type: String
     }
 });
 //encrypt password using bcrypt
