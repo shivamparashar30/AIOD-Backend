@@ -40,3 +40,15 @@ exports.getMoneyDonationList = asyncHandler(async (req, res, next) => {
         data: money
     });
 });
+
+//@desc         Get Donate money list  for user
+//@routes       GET/api/v1/donatedmoneylist/:id
+//@access       private
+exports.getMoneyDonationList = asyncHandler(async (req, res, next) => {
+    const money = await MoneyDonation.find({ userId: { $in: req.user.id } });
+    res.status(200).json({
+        success: true,
+        count: money.length,
+        data: money
+    });
+});
