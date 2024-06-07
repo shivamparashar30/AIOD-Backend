@@ -9,7 +9,7 @@ const { protect, checkVerification } = require('../middleware/auth');
 
 
 router.post('/moneydonate', protect, donateMoney);
-router.get('/getmoneydonationlist', protect, getMoneyDonationList);
-router.get('/getusermoneydonationlist', protect, getMoneyDonationList);
+router.get('/getmoneydonationlist/:id', protect, getMoneyDonationList);
+router.get('/getusermoneydonationlist/:id', protect, getMoneyDonationList);
 
 module.exports = router;
